@@ -1,5 +1,7 @@
 ---
 title: "Comments and semicolons"
+sidebar:
+  order: 0
 ---
 
 ## Comments

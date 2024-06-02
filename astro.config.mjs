@@ -19,7 +19,7 @@ export default defineConfig({
           },
         },
         {
-          label: "Language Features",
+          label: "Language features",
           autogenerate: {
             directory: "language-features",
           },
