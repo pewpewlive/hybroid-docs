@@ -1,0 +1,55 @@
+---
+title: Quick Start
+description: A reference page in my new Starlight docs site.
+---
+
+import { Tabs, TabItem } from "@astrojs/starlight/components"
+
+This guide will help you get started with Hybroid by installing it and creating your first Hybroid project.
+
+## Installation
+
+Run this command in your terminal:
+
+<Tabs syncKey="os">
+  <TabItem label="Windows" icon="seti:windows">
+    ```powershell title="PowerShell"
+    irm "https://example.com" | iex
+    ```
+
+    You may need to change the execution policy:
+
+    ```powershell title="PowerShell"
+    Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
+    ```
+
+  </TabItem>
+  <TabItem label="Linux" icon="linux">
+    ```bash title="Bash"
+    curl "https://example.com" | sh
+    ```
+  </TabItem>
+  <TabItem label="macOS" icon="apple">
+    ```zsh title="Zsh"
+    curl "https://example.com" | sh
+    ```
+  </TabItem>
+</Tabs>
+
+After installation, enter `hybroid about` to check whether Hybroid has been installed.
+
+The console output should look something like this:
+
+```
+> hybroid about
+Hybroid v0.0.0
+
+Copyright (C) Hybroid Team, 2024
+Licensed under Apache-2.0
+```
+
+And voilà! You are ready to create your first project!
+
+## Creating the project
+
+Creating a project in Hybroid is trivial. Use `hybroid init` to initialize the project. You will be asked a few questions while doing so.
