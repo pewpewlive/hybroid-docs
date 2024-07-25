@@ -1,5 +1,7 @@
 ---
 title: What is APPAPI?
+sidebar:
+  order: 0
 ---
 
 Augmented PewPew API: PewPew API, developed to use all Hybroid's features and to improve developer experience.
@@ -29,35 +31,3 @@ PPOL:
 - Includes improvements to the PewPew API
 - PewPew enums are replaced with tables having indexes or having shorthands
 
-## API
-
-### `void PewPew.Level.SetSize(width fixed, height fixed)`
-
-### `void PewPew.Level.SetSize(width fixed)`
-
-Sets the level size to a desired one. If only one argument is given, the level will be square.
-
-`void PewPew.Player.SetConfig(index int, config map)`
-
-Configures the player.
-
-### `entity PewPew.Entity.Ship`
-
-`PewPew.Entity.Ship Spawn(x fixed, y fixed, index int)`
-
-`PewPew.Entity.Ship Spawn(x fixed, y fixed, index int, PewPew.Types.WeaponConfig weapon_config)`
-A spawnable player entity.
-Example:
-
-```rust
-let playerShip = spawn Ship(100f, 100f, 0, {weaponType: Double, WeaponFreq: Hz10})
-Print(@MapToStr(playerShip.GetConfig()))
-```
-
-`map GetConfig()`
-
-Gets the configuration for the player.
-
-`Damage(damage int)`
-
-Damages the player.
