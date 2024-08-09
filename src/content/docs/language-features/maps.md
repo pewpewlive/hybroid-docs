@@ -16,10 +16,6 @@ let inventory = {
 }
 
 Print(fruits["apples"]) // -> 5
-
-// or
-
-Print(fruits.apples) // -> 5
 ```
 
 ### Adding elements to the map

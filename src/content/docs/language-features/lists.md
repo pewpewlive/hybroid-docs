@@ -12,12 +12,12 @@ let fruits = ["banana", "kiwi", "apple", "pear", "cherry"]
 Print(fruits[2]) // -> kiwi
 ```
 
-To get the length of the list or , use `@Len` directive.
+To get the length of the list, use the `#` keyword.
 
 ```rs
 let fruits = ["banana", "kiwi", "apple", "pear", "cherry"]
 
-repeat @Len(fruits) with i {
+repeat #fruits with i {
   Print(fruits[i])
 }
 ```

@@ -23,7 +23,7 @@ Run this command in your terminal:
     You may need to change the execution policy:
 
     ```powershell title="PowerShell"
-    Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
+    Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process
     ```
 
   </TabItem>
@@ -44,11 +44,8 @@ After installation, enter `hybroid about` to check whether Hybroid has been inst
 The console output should look something like this:
 
 ```
-> hybroid about
-Hybroid v0.0.0
-
-Copyright (C) Hybroid Team, 2024
-Licensed under Apache-2.0
+> hybroid -v
+hybroid version 0.0.0
 ```
 
 And voilà! You are ready to create your first project!

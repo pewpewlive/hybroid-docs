@@ -16,7 +16,8 @@ Benefits of Hybroid:
 - Certain PewPew APIs are now an integral part of Hybroid (such as `tick` statement)
 - Native support for fixedpoint numbers (including support for degree-to-radian conversion, transpile-time float-to-fixedpoint conversion)
 - Native support for PewPew Marketplace
+<!-- - Integrated language server -->
 
 However, Hybroid does come with certain limitations:
 - Not beginner-friendly
-- Limited support for Lua helpers and libraries
+- No support for Lua helpers and libraries
