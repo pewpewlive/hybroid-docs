@@ -7,9 +7,12 @@ import react from "@astrojs/react"
 export default defineConfig({
   integrations: [
     starlight({
+      logo: {
+        src: "./src/assets/hybroid_big.svg"
+      },
       title: "Hybroid docs",
       social: {
-        github: "https://github.com/withastro/starlight",
+        github: "https://github.com/pewpewlive/hybroid-docs",
       },
       sidebar: [
         {
