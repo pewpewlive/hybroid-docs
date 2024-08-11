@@ -52,7 +52,15 @@ You can import the `Greet` [function](/language-features/functions/) by prependi
 
 ```rs title="level.hyb"
 env MyLevel as Level
-use MyHelper
 
 MyHelper:Greet("Peter") // -> Hello, Peter!
+```
+
+If you don't want to prepend the environment every time, you can use `use` statement instead:
+
+```rs title="level.hyb"
+env MyLevel as Level
+use MyHelper
+
+Greet("Peter") // -> Hello, Peter!
 ```
