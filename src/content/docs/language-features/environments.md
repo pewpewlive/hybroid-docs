@@ -48,10 +48,11 @@ fn Greet(name) {
 }
 ```
 
-You can import the `Greet` [function](/language-features/functions/) by prepending the namespace before the function name:
+You can import the `Greet` [function](/language-features/functions/) by prepending the environment before the function name:
 
 ```rs title="level.hyb"
 env MyLevel as Level
+use MyHelper
 
-MyHelper.Greet("Peter") // -> Hello, Peter!
+MyHelper:Greet("Peter") // -> Hello, Peter!
 ```
