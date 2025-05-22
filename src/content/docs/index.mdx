@@ -15,3 +15,18 @@ hero:
       link: https://hybroid.pewpew.live/
       icon: external
 ---
+
+import { CardGrid, Card } from "@astrojs/starlight/components"
+
+<CardGrid stagger>
+  <Card title="Handcrafted for PewPew Live" icon="rocket">
+    Specially created with PewPew Live developer experience in mind.
+  </Card>
+  <Card title="State of the art error messages" icon="warning">
+    Helpful error messages that display in-depth information about what went wrong and potential
+    solutions.
+  </Card>
+  <Card title="Familiar syntax" icon="add-document">
+    Familiar syntax reminiscent of Rust and other popular languages.
+  </Card>
+</CardGrid>

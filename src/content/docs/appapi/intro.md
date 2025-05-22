@@ -6,6 +6,7 @@ sidebar:
 
 Augmented PewPew API: PewPew API, developed to use all Hybroid's features and to improve developer experience.
 
+<!--
 ## APPAPI VS PPOL
 
 APPAPI:
@@ -30,4 +31,4 @@ PPOL:
 - Needs importing via `require()` function
 - Includes improvements to the PewPew API
 - PewPew enums are replaced with tables having indexes or having shorthands
-
+-->
