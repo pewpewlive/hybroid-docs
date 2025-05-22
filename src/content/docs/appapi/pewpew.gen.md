@@ -28,13 +28,18 @@ sidebar:
 - `BafRed`
 - `WaryMissile`
 - `UfoBullet`
+- `Spiny`
+- `SuperMothership`
 - `PlayerBullet`
 - `BombExplosion`
 - `PlayerExplosion`
 - `Bonus`
 - `FloatingMessage`
 - `Pointonium`
+- `Kamikaze`
 - `BonusImplosion`
+- `Mace`
+- `PlasmaField`
 
 ### `MothershipType`
 
@@ -53,6 +58,8 @@ sidebar:
 - `FourDirections`
 - `DoubleSwipe`
 - `Hemisphere`
+- `Shotgun`
+- `Laser`
 
 ### `CannonFrequency`
 
@@ -74,12 +81,18 @@ sidebar:
 - `SmallAtomize`
 - `SmallFreeze`
 
+### `MaceType`
+
+- `DamagePlayers`
+- `DamageEntities`
+
 ### `BonusType`
 
 - `Reinstantiation`
 - `Shield`
 - `Speed`
 - `Weapon`
+- `Mace`
 
 ### `WeaponType`
 
@@ -87,6 +100,9 @@ sidebar:
 - `FreezeExplosion`
 - `RepulsiveExplosion`
 - `AtomizeExplosion`
+- `PlasmaField`
+- `WallTrailLasso`
+- `Mace`
 
 ### `AsteroidSize`
 
@@ -113,7 +129,7 @@ Prints debug info: the number of entities created and the amount of memory used 
 ```rs
 SetLevelSize(fixed width, fixed height) 
 ```
-Sets the level's size. Implicetely adds walls to make sure that entities can not go outside of the level's boundaries. `width` and `height` are clamped to the range ]0fx, 6000fx]. If this function is not called, the level size is (10fx, 10fx), which is uselessly small for most cases.
+Sets the level's size. Implicitly adds walls to make sure that entities can not go outside of the level's boundaries. `width` and `height` are clamped to the range ]0fx, 6000fx]. If this function is not called, the level size is (10fx, 10fx), which is uselessly small for most cases.
 
 ### `AddWall`
 ```rs
@@ -214,6 +230,22 @@ ConfigurePlayerShipWeapon(entity shipId, struct {
 ```
 Configures the weapon of the ship identified with `shipId` using `configuration`. `frequency` determines the frequency of the shots. `cannon` determines the type of cannon. `duration` determines the number of game ticks during which the weapon will be available. Once the duration expires, the weapon reverts to its permanent configuration. If `duration` is omitted, the weapon will be permanently set to this configuration. If `frequency` or `cannon` is omitted, the ship is configured to not have any weapon.
 
+### `ConfigurePlayerShipWallTrail`
+```rs
+ConfigurePlayerShipWallTrail(entity shipId, struct {
+  number wallLength
+}) 
+```
+Configures a wall trail that kills everything inside when the ship it is attached to creates a loop with it. `wallLength` is clamped to  [100, 4000]. In Partitioner, the length is 2000. If `wallLength` is not specified, the trail is removed.
+
+### `ConfigurePlayerShip`
+```rs
+ConfigurePlayerShip(entity shipId, struct {
+  bool swapInputs
+}) 
+```
+Configures various properties of the player ship identified by`id`
+
 ### `AddDamageToPlayerShip`
 ```rs
 AddDamageToPlayerShip(entity shipId, number damage) 
@@ -286,6 +318,12 @@ CreateExplosion(fixed x, fixed y, number color, fixed scale, number particleCoun
 ```
 Creates an explosion of particles at the location `x`,`y`. `color` specifies the color of the explosion. `scale` describes how large the explosion will be. It should be in the range ]0, 10], with 1 being an average explosion. `particleCount` specifies the number of particles that make up the explosion. It must be in the range [1, 100].
 
+### `AddParticle`
+```rs
+AddParticle(fixed x, fixed y, fixed z, fixed dx, fixed dy, fixed dz, number color, number duration) 
+```
+Adds a particle at the given position, that moves at the given speed, with the given color and duration. The engine may not spawn all particles if are already a lot of particles alive already spawned (e.g. more than 1000)
+
 ### `NewAsteroid`
 ```rs
 NewAsteroid(fixed x, fixed y) -> entity
@@ -348,6 +386,7 @@ Creates a new Crowder at the location `x`,`y`, and returns its entityId.
 ```rs
 NewFloatingMessage(fixed x, fixed y, text str, struct {
   fixed scale
+  fixed dz
   number ticksBeforeFade
   bool isOptional
 }) -> entity
@@ -366,17 +405,38 @@ NewInertiac(fixed x, fixed y, fixed acceleration, fixed angle) -> entity
 ```
 Creates a new Inertiac at the location `x`,`y`, and returns its entityId. The inertiac will accelerate according to `acceleration`. It spawns with a random velocity in a direction specified by `angle`.
 
+### `NewKamikaze`
+```rs
+NewKamikaze(fixed x, fixed y, fixed angle) -> entity
+```
+Creates a new Kamikaze at the location `x`,`y` that starts moving in the direction specified by `angle`.
+
 ### `NewMothership`
 ```rs
 NewMothership(fixed x, fixed y, number type, fixed angle) -> entity
 ```
 Creates a new Mothership at the location `x`,`y`, and returns its entityId.
 
+### `NewMothershipBullet`
+```rs
+NewMothershipBullet(fixed x, fixed y, fixed angle, fixed speed, number color, bool large) -> entity
+```
+Creates a new mothership bullet.
+
 ### `NewPointonium`
 ```rs
 NewPointonium(fixed x, fixed y, number value) -> entity
 ```
 Creates a new Pointonium at the location `x`,`y`. Value must be 64, 128, or 256.
+
+### `NewPlasmaField`
+```rs
+NewPlasmaField(entity shipAId, entity shipBId, struct {
+  fixed length
+  fixed stiffness
+}) -> entity
+```
+Creates a new plasma field between `shipA` and `shipB`, and returns its entityId. If `shipA` or `shipB` is destroyed, the plasma field is destroyed as well. `length` is optional, and specifies the length of the plasma field (defaut is 150). `stiffness` is optional, and specifies the stiffness of the plasma field (default is 1)
 
 ### `NewPlayerShip`
 ```rs
@@ -401,6 +461,18 @@ Creates a new Rolling Cube at the location `x`,`y`, and returns its entityId.
 NewRollingSphere(fixed x, fixed y, fixed angle, fixed speed) -> entity
 ```
 Creates a new Rolling Sphere at the location `x`,`y`, and returns its entityId.
+
+### `NewSpiny`
+```rs
+NewSpiny(fixed x, fixed y, fixed angle, fixed attractivity) -> entity
+```
+Creates a new Spiny at the location `x`,`y` that starts moving in the direction specified by `angle`. `attractivity` specifies how much the Spiny is attracted to the closest player: 1fx is normal attractivity.
+
+### `NewSuperMothership`
+```rs
+NewSuperMothership(fixed x, fixed y, number type, fixed angle) -> entity
+```
+Creates a new Super Mothership at the location `x`,`y`, and returns its entityId.
 
 ### `NewWary`
 ```rs
@@ -450,6 +522,12 @@ EntitySetPosition(entity entityId, fixed x, fixed y)
 ```
 Sets the position of the entity identified by `id` to `x`,`y`
 
+### `EntityMove`
+```rs
+EntityMove(entity entityId, fixed dx, fixed dy) 
+```
+Attempts to move the entity identified by `id` by `dx`,`dy`. Movement will be blocked by walls.
+
 ### `EntitySetRadius`
 ```rs
 EntitySetRadius(entity entityId, fixed radius) 
@@ -479,11 +557,28 @@ EntityReactToWeapon(entity entityId, struct {
 ```
 Makes the entity identified by `id` react to the weapon described in `weaponDescription`. Returns whether the entity reacted to the weapon. The returned value is typically used to decide whether the weapon should continue to exist or not. In the case of an explosion, `x` and `y` should store the origin of the explosion. In the case of a bullet, `x` and `y` should store the vector of the bullet. The player identified by `playerIndex` will be assigned points. If `playerIndex` is invalid, no player will be assigned points.
 
+### `EntityAddMace`
+```rs
+EntityAddMace(entity targetId, struct {
+  fixed distance
+  fixed angle
+  fixed rotationSpeed
+  number type
+}) -> entity
+```
+Adds a mace to the entity identified with `entityId`. If `rotationSpeed` exists, the mace will have a natural rotation, otherwise it will move due to inertia.
+
 ### `CustomizableEntitySetPositionInterpolation`
 ```rs
 CustomizableEntitySetPositionInterpolation(entity entityId, bool enable) 
 ```
-Sets whether the position of the mesh wil be interpolated when rendering. In general, this should be set to true if the entity will be moving smoothly.
+Sets whether the position of the mesh wil be interpolated when rendering. In general, this should be set to true if the entity will be moving.
+
+### `CustomizableEntitySetAngleInterpolation`
+```rs
+CustomizableEntitySetAngleInterpolation(entity entityId, bool enable) 
+```
+Sets whether the angle of the mesh wil be interpolated when rendering. Angle interpolation is enabled by default.
 
 ### `CustomizableEntitySetMesh`
 ```rs
@@ -513,7 +608,7 @@ Sets the string to be displayed as part of the mesh of the customizable entity i
 ```rs
 CustomizableEntitySetMeshXyz(entity entityId, fixed x, fixed y, fixed z) 
 ```
-Sets the position of the mesh to x,y,z, relative to the center ofthe customizable entity identified by `id`
+Sets the position of the mesh to x,y,z, relative to the center of the customizable entity identified by `id`
 
 ### `CustomizableEntitySetMeshZ`
 ```rs
@@ -601,3 +696,15 @@ Makes the customizable entity identified by `id` spawn for a duration of `spawni
 CustomizableEntityStartExploding(entity entityId, number explosionDuration) 
 ```
 Makes the customizable entity identified by `id` explode for a duration of `explosionDuration` game ticks. After the explosion, the entity is destroyed. `explosionDuration` must be less than 255. Any scale applied to the entity is also applied to the explosion.
+
+### `CustomizableEntitySetTag`
+```rs
+CustomizableEntitySetTag(entity entityId, number tag) 
+```
+Sets a tag on customizable entities. The tag can be read back with `customizableEntityGetTag`.
+
+### `CustomizableEntityGetTag`
+```rs
+CustomizableEntityGetTag(entity entityId) -> number
+```
+Returns the tag that was set, or 0 if no tag was set.
