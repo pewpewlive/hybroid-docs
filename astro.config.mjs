@@ -11,9 +11,13 @@ export default defineConfig({
         src: "./src/assets/hybroid_big.svg"
       },
       title: "Hybroid docs",
-      social: {
-        github: "https://github.com/pewpewlive/hybroid-docs",
-      },
+      social: [
+        {
+          icon: "github",
+          label: "GitHub",
+          href: "https://github.com/pewpewlive/hybroid-docs",
+        },
+      ],
       sidebar: [
         {
           label: "Get Started",
