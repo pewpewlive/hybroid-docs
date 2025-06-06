@@ -1,7 +1,7 @@
 ---
 title: Structs
 sidebar:
-  order: 12
+  order: 11
 ---
 
 Structures are classes that do not have inheritance.

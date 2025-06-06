@@ -1,6 +1,6 @@
 ---
 title: Fmath API
-slug: appapi/fmath
+slug: libraries/fmath
 sidebar:
   order: 2
 ---

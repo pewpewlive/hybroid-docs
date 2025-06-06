@@ -1,7 +1,7 @@
 ---
 title: Conditional statements
 sidebar:
-  order: 10
+  order: 9
 ---
 
 ### If statement

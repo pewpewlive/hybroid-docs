@@ -1,6 +1,6 @@
 ---
 title: PewPew API
-slug: appapi/pewpew
+slug: libraries/pewpew
 sidebar:
   order: 1
 ---

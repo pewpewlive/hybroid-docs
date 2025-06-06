@@ -1,7 +1,7 @@
 ---
 title: Enums
 sidebar:
-  order: 11
+  order: 10
 ---
 
 Enums are converted to tables if compiling to Lua.

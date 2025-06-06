@@ -4,20 +4,29 @@ sidebar:
   order: 0
 ---
 
-Hybroid is a programming language, designed to improve the PewPew Live developer experience.
+Hybroid is a programming language, tailored for the PewPew Live developer experience.
 
-Hybroid was created to overcome the limitations of Lua and projects like PewPewScript.
+Hybroid was created to overcome the limitations and shortcomings of Lua, as well as to provide a better developer experience.
 
 Benefits of Hybroid:
-- Contains many new features which are missing in Lua
+- Contains many new features which are missing in Lua (such as enums, structs, etc.)
+- PewPew Live specific features (such as the tick loop or entities)
+- State of the art error messages, inspired by Rust and Scala
 - Optimized OOP via structs and entities
+- Familiar syntax reminiscent of Rust and other popular languages
 - Automatic dead-code elimination
 - Strict typing
-- Certain PewPew APIs are now an integral part of Hybroid (such as `tick` statement)
-- Native support for fixedpoint numbers (including support for degree-to-radian conversion, transpile-time float-to-fixedpoint conversion)
-- Native support for PewPew Marketplace
+- Native support for fixedpoint numbers (including support for degree-to-radian and float-to-fixedpoint conversion)
+<!-- - Native support for PewPew Marketplace -->
 <!-- - Integrated language server -->
 
 However, Hybroid does come with certain limitations:
 - Not beginner-friendly
-- No support for Lua helpers and libraries
+- No support for Lua interoperability
+
+## Interested?
+Check out the [quick start](/get-started/quick-start) guide to get started!
+
+## Support
+
+Hybroid Team is here to help you with any questions or issues you may have. You may contact us at the [official PewPew Discord server](https://pewpew.live/discord), via the [contact form](https://hybroid.pewpew.live/contact-us/) or the [Hybroid Discord server](https://example.com) **TODO: replace example.com with Hybroid Discord link later**.

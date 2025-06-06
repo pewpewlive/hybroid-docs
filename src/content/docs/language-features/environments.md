@@ -33,8 +33,7 @@ The following environment types are available:
   - A lite version of PewPew API is available as well as a full version of Fmath
 - `Sound` - for working with sounds
   - Same as `Mesh`
-  <!-- - `LuaGeneric` - for using standard Lua (e.g. console applications, etc.)
-  - When choosing this environment, some features of the language would be disabled: `spawnable`s, `tick`, `spawn`, fixedpoint support, PPL libraries. All standard Lua libraries are available -->
+- `Generic` - for helpers being used by multiple environments
 
 ## Using environments from other files
 

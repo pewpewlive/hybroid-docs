@@ -11,6 +11,7 @@ export default defineConfig({
         src: "./src/assets/hybroid_big.svg"
       },
       title: "Hybroid docs",
+      favicon: "favicon.png",
       social: [
         {
           icon: "github",
@@ -32,15 +33,9 @@ export default defineConfig({
           },
         },
         {
-          label: "Augmented PewPew API",
+          label: "Library documentation",
           autogenerate: {
-            directory: "appapi",
-          },
-        },
-        {
-          label: "Contributing",
-          autogenerate: {
-            directory: "contributing",
+            directory: "libraries",
           },
         },
       ],
