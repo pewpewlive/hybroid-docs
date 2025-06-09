@@ -33,7 +33,7 @@ The following environment types are available:
   - A lite version of PewPew API is available as well as a full version of Fmath
 - `Sound` - for working with sounds
   - Same as `Mesh`
-- `Generic` - for helpers being used by multiple environments
+- `Shared` - for helpers being used by multiple environments
 
 ## Using environments from other files
 
