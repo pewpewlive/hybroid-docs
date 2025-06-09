@@ -9,10 +9,10 @@ Hybroid is a programming language, tailored for the PewPew Live developer experi
 Hybroid was created to overcome the limitations and shortcomings of Lua, as well as to provide a better developer experience.
 
 Benefits of Hybroid:
-- Contains many new features which are missing in Lua (such as enums, structs, etc.)
+- Contains many new features which are missing in Lua (such as enums, classes, etc.)
 - PewPew Live specific features (such as the tick loop or entities)
 - State of the art error messages, inspired by Rust and Scala
-- Optimized OOP via structs and entities
+- Optimized OOP via classes and entities
 - Familiar syntax reminiscent of Rust and other popular languages
 - Automatic dead-code elimination
 - Strict typing

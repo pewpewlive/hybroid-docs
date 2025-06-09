@@ -8,14 +8,14 @@ In Lua, these structures are also called _tables_. These structures hold multipl
 
 ```rs
 let inventory = {
-  bananas: 2,
-  apples: 5,
-  kiwis: 10,
-  pears: 0,
-  cherries: 12
+  bananas = 2,
+  apples = 5,
+  kiwis = 10,
+  pears = 0,
+  cherries = 12, // trailing comma is optional!
 }
 
-Print(fruits["apples"]) // -> 5
+Pewpew:Print(fruits["apples"]) // -> 5
 ```
 
 ### Adding elements to the map
@@ -24,16 +24,16 @@ Using `add` keyword.
 
 ```rs
 let inventory = {
-  bananas: 2,
-  apples: 5,
-  kiwis: 10,
-  pears: 0,
-  cherries: 12
+  bananas = 2,
+  apples = 5,
+  kiwis = 10,
+  pears = 0,
+  cherries = 12,
 }
 
 add 10 as "watermelon" to inventory
 
-Print(@MapToStr(fruits))
+Pewpew:Print(ToString(fruits))
 
 /*
 -> {
@@ -53,14 +53,14 @@ Using `find` keyword. Only the first match is returned.
 
 ```rs
 let inventory = {
-  bananas: 2,
-  apples: 5,
-  kiwis: 10,
-  pears: 0,
-  cherries: 12
+  bananas = 2,
+  apples = 5,
+  kiwis = 10,
+  pears = 0,
+  cherries = 12,
 }
 
-Print(find 10 in fruits) // -> "kiwis"
+Pewpew:Print(find 10 in fruits) // -> "kiwis"
 ```
 
 ### Removing an element from the map
@@ -69,16 +69,16 @@ Using `remove` keyword.
 
 ```rs
 let inventory = {
-  bananas: 2,
-  apples: 5,
-  kiwis: 10,
-  pears: 0,
-  cherries: 12
+  bananas = 2,
+  apples = 5,
+  kiwis = 10,
+  pears = 0,
+  cherries = 12,
 }
 
 remove "cherries" from fruits
 
-Print(@MapToStr(fruits))
+Pewpew:Print(@MapToStr(fruits))
 
 /*
 -> {

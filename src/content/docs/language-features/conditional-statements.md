@@ -10,11 +10,11 @@ sidebar:
 let a = 10
 
 if a == 10 {
-  Print("It's 10!")
+  Pewpew:Print("It's 10!")
 } else if a == 20 {
-  Print("It's 20!")
+  Pewpew:Print("It's 20!")
 } else {
-  Print("It's a different number!")
+  Pewpew:Print("It's a different number!")
 }
 ```
 
@@ -31,7 +31,7 @@ let check = if a == 10 {
   return "It's a different number!"
 }
 
-Print(check)
+Pewpew:Print(check)
 ```
 
 ### Match statement
@@ -46,7 +46,7 @@ match a {
     a = 24
     return
   }
-  _ => { // else
+  else => { // else
     a = nil
   }
 }
@@ -55,8 +55,8 @@ let a = 10
 let check = match a {
   10 => "It's 10!"
   20 => "It's 20!"
-  _ => "It's a different number!"
+  else => "It's a different number!"
 }
 
-Print(check)
+Pewpew:Print(check)
 ```

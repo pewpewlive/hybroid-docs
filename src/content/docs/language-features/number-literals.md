@@ -4,7 +4,7 @@ sidebar:
   order: 4
 ---
 
-In PPL, you use number literals with `fx` at the end of the number. But thankfully, Hybroid makes working with numbers easier, by giving several options.
+In PPL, you use number literals with `fx` at the end of the number. But thankfully, Hybroid Live makes working with numbers easier, by giving several options.
 
 ### Fixedpoint Literal
 
@@ -16,7 +16,7 @@ let speed = 100.2048fx
 
 ### Decimal Literal
 
-If that's not what you want, Hybroid gives the option to use generic decimal literals by writing a float and adding `f` at the end
+If that's not what you want, Hybroid Live gives the option to use generic decimal literals by writing a float and adding `f` at the end
 
 ```rs
 let a = 100.5f
@@ -26,11 +26,11 @@ let b = 3.14f
 Behind the scenes, the transpiler will convert these numbers to their equivalent value based on the environment settings:
 
 - On `Level` and `Shared` it will convert these numbers to their fixedpoint counterparts (`100.5f` will become `100.2048fx`)
-- On `Mesh`, `Sound` and `Generic` it will stay as a decimal float, just without the 'f'
+- On `Mesh` and `Sound` it will stay as a decimal float, just without the 'f'
 
 ### Angle Literal
 
-Hybroid also adds special literal support for angles.
+Hybroid Live also adds special literal support for angles.
 
 ```rs
 let degrees = 180d

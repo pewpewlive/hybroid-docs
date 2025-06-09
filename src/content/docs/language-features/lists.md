@@ -9,16 +9,16 @@ In Lua, these structures are called "tables". These structures hold multiple dat
 ```rs
 let fruits = ["banana", "kiwi", "apple", "pear", "cherry"]
 
-Print(fruits[2]) // -> kiwi
+Pewpew:Print(fruits[2]) // -> kiwi
 ```
 
-To get the length of the list, use the `#` keyword.
+To get the length of the list, or use `#` prefix.
 
 ```rs
 let fruits = ["banana", "kiwi", "apple", "pear", "cherry"]
 
 repeat #fruits with i {
-  Print(fruits[i])
+  Pewpew:Print(fruits[i])
 }
 ```
 
@@ -31,7 +31,7 @@ let fruits = ["banana", "kiwi", "apple", "pear", "cherry"]
 
 add "watermelon" to fruits
 
-Print(@ListToStr(fruits)) // -> ["banana", "kiwi", "apple", "pear", "cherry", "watermelon"]
+Pewpew:Print(@ListToStr(fruits)) // -> ["banana", "kiwi", "apple", "pear", "cherry", "watermelon"]
 ```
 
 ### Finding the index of the item
@@ -41,7 +41,7 @@ Using `find` keyword. Only the first match is returned.
 ```rs
 let fruits = ["banana", "kiwi", "apple", "pear", "cherry"]
 
-Print(find "apple" in fruits) // -> 3
+Pewpew:Print(find "apple" in fruits) // -> 3
 ```
 
 ### Removing an element from the list
@@ -53,5 +53,5 @@ let fruits = ["banana", "kiwi", "apple", "pear", "cherry"]
 
 remove 4 from fruits
 
-Print(@ListToStr(fruits)) // -> ["banana", "kiwi", "apple", "cherry"]
+Pewpew:Print(@ListToStr(fruits)) // -> ["banana", "kiwi", "apple", "cherry"]
 ```
