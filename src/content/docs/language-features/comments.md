@@ -1,5 +1,5 @@
 ---
-title: "Comments and semicolons"
+title: "Comments"
 sidebar:
   order: 0
 ---
@@ -24,7 +24,3 @@ Pewpew:Print("Hello, World!")
 */
 Pewpew:Print("Hello, World!")
 ```
-
-## Semicolons
-
-Just like in Lua, semicolons are treated as a whitespace character.

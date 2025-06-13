@@ -63,3 +63,24 @@ use MyHelper
 
 Greet("Peter") // -> Hello, Peter!
 ```
+
+## Using mesh environments for entities
+
+```rs title="mesh.hyb"
+env MyMesh as Mesh
+
+pub meshes = [
+  struct {
+    vertexes = [],
+    segments = [],
+    colors = []
+  }
+]
+```
+
+```rs title="level.hyb"
+env MyLevel as Level
+
+let myEntity = NewEntity(0fx, 0fx)
+SetEntityMesh(myEntity, MyMesh, 0)
+```
