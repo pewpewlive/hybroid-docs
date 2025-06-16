@@ -9,68 +9,90 @@ sidebar:
 
 ## Functions
 
-### `MaxFixedpoint`
+### `MaxFixed`
+
 ```rs
-MaxFixedpoint() -> fixed
+MaxFixed() -> fixed 
 ```
 Returns the maximum value a fixedpoint integer can take.
 
-### `RandomFixedpoint`
+
+### `RandomFixed`
+
 ```rs
-RandomFixedpoint(fixed min, fixed max) -> fixed
+RandomFixed(fixed min, fixed max) -> fixed 
 ```
 Returns a random fixedpoint value in the range [`min`, `max`]. `max` must be greater or equal to `min`.
 
-### `RandomInt`
+
+### `RandomNumber`
+
 ```rs
-RandomInt(number min, number max) -> number
+RandomNumber(number min, number max) -> number 
 ```
 Returns an integer in the range [`min`, `max`]. `max` must be greater or equal to `min`.
 
+
 ### `Sqrt`
+
 ```rs
-Sqrt(fixed x) -> fixed
+Sqrt(fixed x) -> fixed 
 ```
 Returns the square root of `x`. `x` must be greater or equal to 0.
 
+
 ### `FromFraction`
+
 ```rs
-FromFraction(number numerator, number denominator) -> fixed
+FromFraction(number numerator, number denominator) -> fixed 
 ```
 Returns the fixedpoint value representing the fraction `numerator`/`denominator`. `denominator` must not be equal to zero.
 
-### `ToInt`
+
+### `ToNumber`
+
 ```rs
-ToInt(fixed value) -> number
+ToNumber(fixed value) -> number 
 ```
 Returns the integral part of the `value`.
 
-### `AbsFixedpoint`
+
+### `AbsFixed`
+
 ```rs
-AbsFixedpoint(fixed value) -> fixed
+AbsFixed(fixed value) -> fixed 
 ```
 Returns the absolute value.
 
-### `ToFixedpoint`
+
+### `ToFixed`
+
 ```rs
-ToFixedpoint(number value) -> fixed
+ToFixed(number value) -> fixed 
 ```
 Returns a fixedpoint value with the integral part of `value`, and no fractional part.
 
+
 ### `Sincos`
+
 ```rs
-Sincos(fixed angle) -> fixed, fixed
+Sincos(fixed angle) -> fixed , fixed 
 ```
 Returns the sinus and cosinus of `angle`. `angle` is in radian.
 
+
 ### `Atan2`
+
 ```rs
-Atan2(fixed y, fixed x) -> fixed
+Atan2(fixed y, fixed x) -> fixed 
 ```
 Returns the principal value of the arc tangent of y/x. Returns a value in the range [0, 2π[.
 
+
 ### `Tau`
+
 ```rs
-Tau() -> fixed
+Tau() -> fixed 
 ```
 Returns τ (aka 2π).
+
