@@ -1,4 +1,4 @@
-# Hybroid Docs
+# Hybroid Live Docs
 
 Git clone, then:
 

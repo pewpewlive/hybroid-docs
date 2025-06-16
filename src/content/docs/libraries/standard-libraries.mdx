@@ -1,0 +1,90 @@
+---
+title: Standard libraries
+slug: libraries/standard-libraries
+sidebar:
+  order: 3
+---
+
+import { Aside } from "@astrojs/starlight/components"
+
+<Aside type="note">
+  Level environments do not have access to the `Math` library. Use `Fmath` instead.
+</Aside>
+
+## String library
+
+The library exposes the following functions:
+
+- `Byte`
+- `Char`
+- `Dump`
+- `Find`
+- `Format`
+- `Gmatch`
+- `Gsub`
+- `Len`
+- `Lower`
+- `Match`
+- `Rep`
+- `Reverse`
+- `Sub`
+- `Upper`
+- `Pack`
+- `Packsize`
+- `Unpack`
+
+The official Lua website has the [documentation](https://www.lua.org/manual/5.3/manual.html#6.4) for the string library.
+
+## Table library
+
+The library exposes the following functions:
+
+- `Concat`
+- `Insert`
+- `Pack`
+- `Unpack`
+- `Remove`
+- `Move`
+- `Sort`
+
+The official Lua website has the [documentation](https://www.lua.org/manual/5.3/manual.html#6.6) for the table library.
+
+## Math library
+
+The Hybroid's `Math` library is only available in mesh and sound environments.
+It is not available when creating levels because the functions it offer are often for dealing with floating point numbers.
+
+The library exposes the following functions:
+
+- `Abs`
+- `Acos`
+- `Asin`
+- `Atan`
+- `Ceil`
+- `Cos`
+- `Deg`
+- `Exp`
+- `Tointeger`
+- `Floor`
+- `Fmod`
+- `Ult`
+- `Log`
+- `Max`
+- `Min`
+- `Modf`
+- `Rad`
+- `Random`
+- `Sin`
+- `Sincos`
+- `Sqrt`
+- `Tan`
+- `Type`
+
+and the constants:
+
+- `Pi`
+- `Huge`
+- `Maxinteger`
+- `Mininteger`
+
+The official Lua website has the [documentation](https://www.lua.org/manual/5.3/manual.html#6.7) for the math library.
