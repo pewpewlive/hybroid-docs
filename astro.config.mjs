@@ -10,7 +10,7 @@ export default defineConfig({
       logo: {
         src: "./src/assets/hybroid_big.svg"
       },
-      title: "Hybroid docs",
+      title: "Hybroid Live docs",
       favicon: "favicon.png",
       social: [
         {

@@ -6,7 +6,7 @@ sidebar:
 
 ## Comments
 
-Comments in Hybroid are like in any other C-style language.
+Comments in Hybroid Live are like in any other C-style language.
 
 `//` indicates a single-line comment.
 

@@ -4,11 +4,11 @@ sidebar:
   order: 0
 ---
 
-Hybroid is a programming language, tailored for the PewPew Live developer experience.
+Hybroid Live is a programming language, tailored for the PewPew Live developer experience.
 
-Hybroid was created to overcome the limitations and shortcomings of Lua, as well as to provide a better developer experience.
+Hybroid Live was created to overcome the limitations and shortcomings of Lua, as well as to provide a better developer experience.
 
-Benefits of Hybroid:
+Benefits of Hybroid Live:
 - Contains many new features which are missing in Lua (such as enums, classes, etc.)
 - PewPew Live specific features (such as the tick loop or entities)
 - State of the art error messages, inspired by Rust and Scala
@@ -20,7 +20,7 @@ Benefits of Hybroid:
 <!-- - Native support for PewPew Marketplace -->
 <!-- - Integrated language server -->
 
-However, Hybroid does come with certain limitations:
+However, Hybroid Live does come with certain limitations:
 - Not beginner-friendly
 - No support for Lua interoperability
 

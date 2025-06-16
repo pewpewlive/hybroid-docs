@@ -4,7 +4,7 @@ sidebar:
   order: 1
 ---
 
-Environments are an important aspect of PPL and Hybroid. Not specifying the environment will result in a transpile-time error.
+Environments are an important aspect of PPL and Hybroid Live. Not specifying the environment will result in a transpile-time error.
 
 The environment definition must be the first statement in the file.
 
