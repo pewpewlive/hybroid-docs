@@ -12,7 +12,7 @@ sidebar:
 ### `MaxFixed`
 
 ```rs
-MaxFixed() -> fixed 
+MaxFixed() -> fixed
 ```
 Returns the maximum value a fixedpoint integer can take.
 
@@ -20,7 +20,7 @@ Returns the maximum value a fixedpoint integer can take.
 ### `RandomFixed`
 
 ```rs
-RandomFixed(fixed min, fixed max) -> fixed 
+RandomFixed(fixed min, fixed max) -> fixed
 ```
 Returns a random fixedpoint value in the range [`min`, `max`]. `max` must be greater or equal to `min`.
 
@@ -28,7 +28,7 @@ Returns a random fixedpoint value in the range [`min`, `max`]. `max` must be gre
 ### `RandomNumber`
 
 ```rs
-RandomNumber(number min, number max) -> number 
+RandomNumber(number min, number max) -> number
 ```
 Returns an integer in the range [`min`, `max`]. `max` must be greater or equal to `min`.
 
@@ -36,7 +36,7 @@ Returns an integer in the range [`min`, `max`]. `max` must be greater or equal t
 ### `Sqrt`
 
 ```rs
-Sqrt(fixed x) -> fixed 
+Sqrt(fixed x) -> fixed
 ```
 Returns the square root of `x`. `x` must be greater or equal to 0.
 
@@ -44,7 +44,7 @@ Returns the square root of `x`. `x` must be greater or equal to 0.
 ### `FromFraction`
 
 ```rs
-FromFraction(number numerator, number denominator) -> fixed 
+FromFraction(number numerator, number denominator) -> fixed
 ```
 Returns the fixedpoint value representing the fraction `numerator`/`denominator`. `denominator` must not be equal to zero.
 
@@ -52,7 +52,7 @@ Returns the fixedpoint value representing the fraction `numerator`/`denominator`
 ### `ToNumber`
 
 ```rs
-ToNumber(fixed value) -> number 
+ToNumber(fixed value) -> number
 ```
 Returns the integral part of the `value`.
 
@@ -60,7 +60,7 @@ Returns the integral part of the `value`.
 ### `AbsFixed`
 
 ```rs
-AbsFixed(fixed value) -> fixed 
+AbsFixed(fixed value) -> fixed
 ```
 Returns the absolute value.
 
@@ -68,7 +68,7 @@ Returns the absolute value.
 ### `ToFixed`
 
 ```rs
-ToFixed(number value) -> fixed 
+ToFixed(number value) -> fixed
 ```
 Returns a fixedpoint value with the integral part of `value`, and no fractional part.
 
@@ -76,7 +76,7 @@ Returns a fixedpoint value with the integral part of `value`, and no fractional 
 ### `Sincos`
 
 ```rs
-Sincos(fixed angle) -> fixed , fixed 
+Sincos(fixed angle) -> (fixed, fixed)
 ```
 Returns the sinus and cosinus of `angle`. `angle` is in radian.
 
@@ -84,7 +84,7 @@ Returns the sinus and cosinus of `angle`. `angle` is in radian.
 ### `Atan2`
 
 ```rs
-Atan2(fixed y, fixed x) -> fixed 
+Atan2(fixed y, fixed x) -> fixed
 ```
 Returns the principal value of the arc tangent of y/x. Returns a value in the range [0, 2π[.
 
@@ -92,7 +92,7 @@ Returns the principal value of the arc tangent of y/x. Returns a value in the ra
 ### `Tau`
 
 ```rs
-Tau() -> fixed 
+Tau() -> fixed
 ```
 Returns τ (aka 2π).
 
