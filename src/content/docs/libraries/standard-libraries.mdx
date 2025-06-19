@@ -15,141 +15,22 @@ import { Aside } from "@astrojs/starlight/components"
 
 The library exposes the following functions:
 
-### `Byte`
-
-```rs
-Byte(text s, number i, number j) -> number
-```
-
-Returns the numeric codes of the characters in the string between positions i and j (inclusive).
-
-### `Char`
-
-```rs
-Char(list<number> numbers) -> text
-```
-
-Receives zero or more integers and returns a string where each character has the internal numeric code equal to its corresponding argument.
-
-### `Find`
-
-```rs
-Find(text s, text pattern, number init) -> (number start, number end, list<number> captures)
-```
-
-Looks for the first match of pattern in the string s. If it finds a match, then find returns the indices of s where this occurrence starts and ends; otherwise, it returns nil.
-
-### `Format`
-
-```rs
-Format(text format, ...any values) -> text
-```
-
-Returns a formatted version of its variable number of arguments following the description given in its first argument.
-
-### `Gsub`
-
-```rs
-Gsub(text s, text pattern, text repl) -> text
-```
-
-Returns a copy of s in which all (or the first n, if given) occurrences of the pattern have been replaced by a replacement string specified by repl.
-
-### `Gmatch`
-
-```rs
-Gmatch(text s, text pattern) -> (number, number)
-```
-
-Returns an iterator function that, each time it is called, returns the next captures from pattern over string s.
-
-### `Dump`
-
-```rs
-Dump(fn(), boolean strip) -> text
-```
-
-Returns a string containing a binary representation of the given function, so that a later load on this string returns a copy of the function.
-
-### `Len`
-
-```rs
-Len(text s) -> number
-```
-
-Returns the length of the string s.
-
-### `Lower`
-
-```rs
-Lower(text s) -> text
-```
-
-Returns a copy of this string with all uppercase letters changed to lowercase.
-
-### `Upper`
-
-```rs
-Upper(text s) -> text
-```
-
-Returns a copy of this string with all lowercase letters changed to uppercase.
-
-### `Match`
-
-```rs
-Match(text s, text pattern, number init) -> ...text
-```
-
-Looks for the first match of pattern in the string s. If it finds a match, then match returns the captures from the pattern; otherwise, it returns nil.
-
-### `Rep`
-
-```rs
-Rep(text s, number n) -> text
-```
-
-Returns a string that is the concatenation of n copies of the string s.
-
-### `Reverse`
-
-```rs
-Reverse(text s) -> text
-```
-
-Returns a string that is the string s reversed.
-
-### `Sub`
-
-```rs
-Sub(text s, number i, number j) -> text
-```
-
-Returns the substring of s that starts at i and continues until j; i and j can be negative.
-
-### `Pack`
-
-```rs
-Pack(text fmt, text p, text x, ...text) -> text
-```
-
-Returns a binary string containing the values v1, v2, etc. packed (that is, serialized in binary form) according to the format string fmt.
-
-### `PackSize`
-
-```rs
-PackSize(text fmt) -> number
-```
-
-Returns the size of a string resulting from string.pack with the given format string and arguments.
-
-### `Unpack`
-
-```rs
-Unpack(text fmt, text s, number pos) -> (...text, number)
-```
-
-Returns the values packed in string s according to the format string fmt. An optional pos marks where to start reading in s (default is 1). After the read values, this function also returns the index of the first unread byte in s.
+- `Byte`
+- `Char`
+- `Find`
+- `Format`
+- `Gsub`
+- `Gmatch`
+- `Dump`
+- `Len`
+- `Upper`
+- `Match`
+- `Rep`
+- `Reverse`
+- `Sub`
+- `Pack`
+- `PackSize`
+- `Unpack`
 
 The official Lua website has the additional [documentation](https://www.lua.org/manual/5.3/manual.html#6.4) for the string library.
 
@@ -157,45 +38,11 @@ The official Lua website has the additional [documentation](https://www.lua.org/
 
 The library exposes the following functions:
 
-### `Concat`
-
-```rs
-Concat(list<text> list, text sep, number i, number j) -> text
-```
-
-Given a list of strings, returns the string `list[i]..sep..list[i+1] ··· sep..list[j]`. The default value for `sep` is an empty string, the default for `i` is 1, and the default for `j` is the length of the list.
-
-### `Insert`
-
-```rs
-Insert<T>(list<T> list, T value) -> list<T>
-```
-
-Inserts the given value at the end of the list and returns the modified list.
-
-### `InsertAt`
-
-```rs
-InsertAt<T>(list<T> list, number pos, T value) -> list<T>
-```
-
-Inserts the given value at the specified position in the list and returns the modified list.
-
-### `Remove`
-
-```rs
-Remove<T>(list<T> list, number pos) -> T
-```
-
-Removes and returns the element at the specified position in the list, shifting down other elements to close the space.
-
-### `Sort`
-
-```rs
-Sort<T>(list<T> list) -> list<T>
-```
-
-Sorts the elements of the list in place and returns the sorted list. The default sort order is ascending, built upon converting the elements into strings, then comparing their sequences of UTF-16 code units values.
+- `Concat`
+- `Insert`
+- `InsertAt`
+- `Remove`
+- `Sort`
 
 The official Lua website has the additional [documentation](https://www.lua.org/manual/5.3/manual.html#6.6) for the table library.
 
@@ -206,214 +53,34 @@ It is not available when creating levels because the functions it offer are ofte
 
 The library exposes the following functions:
 
-### `Abs`
-
-```rs
-Abs(number x) -> number
-```
-
-Returns the absolute value of x
-
-### `Acos`
-
-```rs
-Acos(number x) -> number
-```
-
-Returns the arccosine of x (in radians)
-
-### `Atan`
-
-```rs
-Atan(number y, number x) -> number
-```
-
-Returns the arctangent of y/x (in radians)
-
-### `Ceil`
-
-```rs
-Ceil(number x) -> number
-```
-
-Returns the smallest integer greater than or equal to x
-
-### `Cos`
-
-```rs
-Cos(number x) -> number
-```
-
-Returns the cosine of x (x is in radians)
-
-### `Deg`
-
-```rs
-Deg(number x) -> number
-```
-
-Converts x from radians to degrees
-
-### `Exp`
-
-```rs
-Exp(number x) -> number
-```
-
-Returns e raised to the power of x
-
-### `Floor`
-
-```rs
-Floor(number x) -> number
-```
-
-Returns the largest integer less than or equal to x
-
-### `Fmod`
-
-```rs
-Fmod(number x, number y) -> number
-```
-
-Returns the floating-point remainder of x/y
-
-### `Log`
-
-```rs
-Log(number x) -> number
-```
-
-Returns the natural logarithm of x
-
-### `Max`
-
-```rs
-Max(number x, ...) -> number
-```
-
-Returns the maximum value among the arguments
-
-### `Min`
-
-```rs
-Min(number x, ...) -> number
-```
-
-Returns the minimum value among the arguments
-
-### `Modf`
-
-```rs
-Modf(number x) -> (number, number)
-```
-
-Returns the integral and fractional parts of x
-
-### `Rad`
-
-```rs
-Rad(number x) -> number
-```
-
-Converts x from degrees to radians
-
-### `Random`
-
-```rs
-Random(number min, number max) -> number
-```
-
-Returns a random number between min and max
-
-### `Sin`
-
-```rs
-Sin(number x) -> number
-```
-
-Returns the sine of x (x is in radians)
-
-### `Sincos`
-
-```rs
-Sincos(number x) -> (number, number)
-```
-
-Returns both sine and cosine of x (x is in radians)
-
-### `Sqrt`
-
-```rs
-Sqrt(number x) -> number
-```
-
-Returns the square root of x
-
-### `Tan`
-
-```rs
-Tan(number x) -> number
-```
-
-Returns the tangent of x (x is in radians)
-
-### `ToInt`
-
-```rs
-ToInt(number x) -> number
-```
-
-Converts x to an integer
-
-### `Type`
-
-```rs
-Type(number x) -> string
-```
-
-Returns the type of x as a string
-
-### `Ult`
-
-```rs
-Ult(number x, number y) -> boolean
-```
-
-Returns true if x is less than y (unsigned comparison)
+- `Abs`
+- `Acos`
+- `Atan`
+- `Ceil`
+- `Cos`
+- `Deg`
+- `Exp`
+- `Floor`
+- `Fmod`
+- `Log`
+- `Max`
+- `Min`
+- `Modf`
+- `Rad`
+- `Random`
+- `Sin`
+- `Sincos`
+- `Sqrt`
+- `Tan`
+- `ToInt`
+- `Type`
+- `Ult`
 
 ## Math constants
 
-### `Pi`
-
-```rs
-number Pi
-```
-
-Mathematical constant π (3.141592...)
-
-### `Huge`
-
-```rs
-number Huge
-```
-
-A value larger than any other numeric value
-
-### `MaxInt`
-
-```rs
-number MaxInt
-```
-
-The maximum integer value
-
-### `MinInt`
-
-```rs
-number MinInt
-```
-
-The minimum integer value
+- `Pi`
+- `Huge`
+- `MaxInt`
+- `MinInt`
 
 The official Lua website has the additional [documentation](https://www.lua.org/manual/5.3/manual.html#6.7) for the math library.
