@@ -53,9 +53,9 @@ match a {
 
 let a = 10
 let check = match a {
-  10 => "It's 10!"
-  20 => "It's 20!"
-  else => "It's a different number!"
+  10 => yield "It's 10!"
+  20 => yield "It's 20!"
+  else => yield "It's a different number!"
 }
 
 Pewpew:Print(check)

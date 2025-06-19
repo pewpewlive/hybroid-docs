@@ -14,7 +14,7 @@ fn Greet(name) {
 Greet("John") // -> Hello, John!
 ```
 
-Functions can be annonymous, too! Useful for callbacks.
+Functions can be anonymous, too! Useful for callbacks.
 
 ```rs
 let Greet = fn (name) {
