@@ -17,3 +17,32 @@ let inventory = {
 
 Pewpew:Print(inventory["apples"]) // -> 5
 ```
+
+### Adding new entries
+
+You can also add new entries to the map.
+
+```rs
+let inventory = {
+  bananas = 2,
+  apples = 5,
+  kiwis = 10,
+  pears = 0,
+  cherries = 12,
+}
+
+inventory["watermelons"] = 10
+
+Pewpew:Print(ToString(inventory))
+
+/*
+-> {
+  bananas: 2,
+  apples: 5,
+  kiwis: 10,
+  pears: 0,
+  cherries: 12,
+  watermelons: 10
+}
+*/
+```

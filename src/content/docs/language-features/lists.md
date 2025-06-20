@@ -29,29 +29,7 @@ Using `add` keyword.
 ```rs
 let fruits = ["banana", "kiwi", "apple", "pear", "cherry"]
 
-add "watermelon" to fruits
+Table:Insert(fruits, "watermelon")
 
-Pewpew:Print(@ListToStr(fruits)) // -> ["banana", "kiwi", "apple", "pear", "cherry", "watermelon"]
-```
-
-### Finding the index of the item
-
-Using `find` keyword. Only the first match is returned.
-
-```rs
-let fruits = ["banana", "kiwi", "apple", "pear", "cherry"]
-
-Pewpew:Print(find "apple" in fruits) // -> 3
-```
-
-### Removing an element from the list
-
-Using `remove` keyword.
-
-```rs
-let fruits = ["banana", "kiwi", "apple", "pear", "cherry"]
-
-remove 4 from fruits
-
-Pewpew:Print(@ListToStr(fruits)) // -> ["banana", "kiwi", "apple", "cherry"]
+Pewpew:Print(ToString(fruits)) // -> ["banana", "kiwi", "apple", "pear", "cherry", "watermelon"]
 ```
