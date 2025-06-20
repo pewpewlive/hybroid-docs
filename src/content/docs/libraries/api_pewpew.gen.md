@@ -601,10 +601,10 @@ NewUFO(fixed x, fixed y, fixed dx) -> entity
 Creates a new UFO at the location `x`,`y` moving horizontally at the speed of `dx`, and returns its entityId.
 
 
-### `RollingCubeSetEnableCollisionsWithWalls`
+### `SetRollingCubeWallCollision`
 
 ```rs
-RollingCubeSetEnableCollisionsWithWalls(entity entity_id, bool collide_with_walls)
+SetRollingCubeWallCollision(entity entity_id, bool collide_with_walls)
 ```
 Sets whether the rolling cube identified with `id` collides with walls. By default it does not.
 
