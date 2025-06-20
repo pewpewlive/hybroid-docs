@@ -46,6 +46,7 @@ fixed // fixedpoint number
 text // string
 bool // boolean
 entity // entity
-fn // function
-list // list
+fn(T) -> T // function
+list<T> // list
+map<T> // map
 ``` 
