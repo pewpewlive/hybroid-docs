@@ -29,4 +29,4 @@ Check out the [quick start](/get-started/quick-start) guide to get started!
 
 ## Support
 
-Hybroid Team is here to help you with any questions or issues you may have. You may contact us at the [official PewPew Discord server](https://pewpew.live/discord), via the [contact form](https://hybroid.pewpew.live/contact-us/) or the [Hybroid Discord server](https://example.com) **TODO: replace example.com with Hybroid Discord link later**.
+Hybroid Team is here to help you with any questions or issues you may have. You may contact us at the [official PewPew Discord server](https://pewpew.live/discord) or via the [contact form](https://hybroid.pewpew.live/contact-us/).

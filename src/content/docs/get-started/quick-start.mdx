@@ -4,49 +4,40 @@ sidebar:
   order: 1
 ---
 
-import { Tabs, TabItem } from "@astrojs/starlight/components"
-
 This guide will help you get started with Hybroid Live by installing it and creating your first Hybroid Live project.
 
-## Installation placeholder
+## Installation
 
-Run this command in your terminal:
+1. Download the latest release from [GitHub](https://github.com/pewpewlive/hybroid-live/releases/latest).
 
-<Tabs syncKey="os">
-  <TabItem label="Windows" icon="seti:windows">
-    ```powershell title="PowerShell"
-    irm "https://example.com" | iex
-    ```
+2. Move the downloaded file to a directory of your choice.
 
-    You may need to change the execution policy:
+3. Go to settings and add the directory to your PATH.
 
-    ```powershell title="PowerShell"
-    Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process
-    ```
+4. Run this command in your terminal:
 
-  </TabItem>
-  <TabItem label="Linux" icon="linux">
-    ```bash title="Bash"
-    curl "https://example.com" | sh
-    ```
-  </TabItem>
-  <TabItem label="macOS" icon="apple">
-    ```zsh title="Zsh"
-    curl "https://example.com" | sh
-    ```
-  </TabItem>
-</Tabs>
-
-After installation, enter `hybroid about` to check whether Hybroid Live has been installed.
+```bash
+hybroid -v
+```
 
 The console output should look something like this:
 
 ```
 > hybroid -v
-hybroid version 0.0.0
+hybroid-live version 0.1.0
 ```
 
 And voilà! You are ready to create your first project!
+
+## Setting up VS Code
+
+1. Download and install [VS Code](https://code.visualstudio.com/) or a fork like VSCodium, Cursor or Windsurf.
+
+2. Download the Hybroid Live extension from [GitHub](https://github.com/pewpewlive/hybroid-vscode/releases/latest).
+
+3. Press `Ctrl+Shift+P` and type `Install from VSIX`.
+
+The extension will be released to the Visual Studio Code Marketplace in the future.
 
 ## Creating the project
 
