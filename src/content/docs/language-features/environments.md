@@ -26,21 +26,22 @@ env EnvName as EnvType
 The following environment types are available:
 
 - `Level` - for working with levels
-  - When choosing this environment, you get to use a subset of the Lua standard libraries: `table`, `string`
-  - A full version of the PewPew API and the Fmath library are available
+  -The Pewpew and Fmath library are available
 - `Mesh` - for working with meshes
-  - When choosing this environment, all of the standard libraries that are enabled globally in PPL are available (exceptions being `coroutine`, `io`, `os`, etc.)
-  - A lite version of PewPew API is available as well as a full version of Fmath
+  - Fmath and Pewpew libraries are not allowed. `Math` library is allowed
 - `Sound` - for working with sounds
   - Same as `Mesh`
-- `Shared` - for helpers being used by multiple environments
+- `Shared` - for helpers being used by multiple environments with different environment types
+  - The Pewpew library is not allowed
+
+The `Table` and `String` libraries are allowed everywhere.
 
 ## Using environments from other files
 
 Consider this example:
 
 ```rs title="myhelper.hyb"
-env MyHelper as Level
+env MyHelper as Shared
 
 fn Greet(name) {
   Print("Hello" .. name .. "!")
@@ -71,9 +72,9 @@ env MyMesh as Mesh
 
 pub meshes = [
   struct {
-    vertexes = [],
-    segments = [],
-    colors = []
+    vertexes = list<list<number>>[],
+    segments = list<list<number>>[],
+    colors = list<number>[]
   }
 ]
 ```
@@ -83,4 +84,20 @@ env MyLevel as Level
 
 let myEntity = NewEntity(0fx, 0fx)
 SetEntityMesh(myEntity, MyMesh, 0)
+```
+
+## Using sound environments
+
+```rs title="sound.hyb"
+env MySound as Sound
+
+pub sounds = [
+  ParseSound("soem jfxr link here")
+]
+```
+
+```rs title="level.hyb"
+env MyLevel as Level
+SetLevelSize(500f, 500f)
+PlaySound(MySound, 0, 100f, 100f)
 ```
