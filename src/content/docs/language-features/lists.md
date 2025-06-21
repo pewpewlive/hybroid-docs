@@ -7,6 +7,7 @@ sidebar:
 In Lua, these structures are called "tables". These structures hold multiple data associated with a numeric index.
 
 ```rs
+let emptyList = list<text>[] // empty list initialization
 let fruits = ["banana", "kiwi", "apple", "pear", "cherry"]
 
 Pewpew:Print(fruits[2]) // -> kiwi
@@ -24,12 +25,11 @@ repeat #fruits with i {
 
 ### Adding elements to the list
 
-Using `add` keyword.
+Using hybroid's `Table` library:
 
 ```rs
-let fruits = ["banana", "kiwi", "apple", "pear", "cherry"]
-
+let fruits = list<text>[]
 Table:Insert(fruits, "watermelon")
 
-Pewpew:Print(ToString(fruits)) // -> ["banana", "kiwi", "apple", "pear", "cherry", "watermelon"]
+Pewpew:Print(ToString(fruits)) // -> ["watermelon"]
 ```
