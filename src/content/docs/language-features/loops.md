@@ -65,17 +65,21 @@ repeat by 2 from 4 to 10 with index {
 ```rs
 let fruits = ["banana", "kiwi", "apple", "pear", "cherry"]
 
-for fruit in fruits {
-  Pewpew:Print(fruit)
+for index, fruit in fruits {
+  Pewpew:Print(fruit .. " at index " .. ToString(index)) 
 }
 ```
 
-It is possible to also get an index.
+You also have the option to ignore one of the variables by leaving an empty identifier (`_`) in there.
 
 ```rs
 let fruits = ["banana", "kiwi", "apple", "pear", "cherry"]
 
-for index, item in fruits {
+for _, fruit in fruits {// ignores the index
+  Pewpew:Print(fruit)
+}
+
+for index in fruits {// ignores the value
   Pewpew:Print(index)
 }
 ```
