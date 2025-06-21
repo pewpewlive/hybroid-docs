@@ -18,27 +18,11 @@ if a == 10 {
 }
 ```
 
-If statements can also be used as expressions.
-
-```rs
-let a = 10
-
-let check = if a == 10 {
-  return "It's 10!"
-} else if a == 20 {
-  return "It's 20!"
-} else {
-  return "It's a different number!"
-}
-
-Pewpew:Print(check)
-```
-
 ### Match statement
 
 ```rs
 match a {
-  1 => // if a is 1 or 10 then execute
+  1 => functionCall()
   10 => {
     //execute
   }
@@ -46,16 +30,14 @@ match a {
     a = 24
     return
   }
-  else => { // else
-    a = nil
-  }
+  else => a = 30
 }
 
 let a = 10
-let check = match a {
-  10 => yield "It's 10!"
-  20 => yield "It's 20!"
-  else => yield "It's a different number!"
+let check = match a { // match expression!
+  10 => "It's 10!"
+  20 => "It's 20!"
+  else => "It's a different number!"
 }
 
 Pewpew:Print(check)
