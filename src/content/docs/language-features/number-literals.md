@@ -26,7 +26,7 @@ let b = 3.14f
 Behind the scenes, the transpiler will convert these numbers to their equivalent value based on the environment settings:
 
 - On `Level` and `Shared` it will convert these numbers to their fixedpoint counterparts (`100.5f` will become `100.2048fx`)
-- On `Mesh` and `Sound` it will stay as a decimal float, just without the 'f'
+- On `Mesh` and `Sound` fixedpoints of any kind are not allowed
 
 ### Angle Literal
 
