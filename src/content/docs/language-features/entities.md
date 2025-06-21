@@ -4,14 +4,15 @@ sidebar:
   order: 3
 ---
 
-Entities are transpile-time classes. They are designed to provide OOP-like feel when working with entities. This feature is disallowed in `Generic` environments. Use `class` keyword there instead.
+Entity declarations work similarly to class declarations, with a different syntax and a few extra features for making the creation of custom entities easier. This feature is disallowed in `Shared` environments.
 
 ### Defining an `entity`
 
 ```rs
-entity Quadro {
+entity ExampleEntity {
   fixed x, y
   fixed speed
+  number hp = 10
 
   spawn(fixed x, y, speed) {
     self.x = x
@@ -24,13 +25,20 @@ entity Quadro {
   }
 
   Update() {
-    let x, y = Pewpew:GetPosition(self)
-    x = x + 10f * self.speed
-    Pewpew:SetPosition(self, x, y)
+    let x, y = Pewpew:GetEntityPosition(self)
+    x = x + 10f * speed // you can bypass writing 'self.'
+    Pewpew:SetEntityPosition(self, x, y)
   }
 
-  fn DamageOtherEntity(entity OtherEntity) {
-    entity.Damage(self.damage)
+  fn Damage(number damage) {
+    hp -= damage
+    if hp <= 0 {
+      destroy self()
+    }
+  }
+
+  fn DamageOtherEntity(ExampleEntity otherEntity) {
+    otherEntity.Damage(1)
   }
 }
 ```
