@@ -27,6 +27,7 @@ Types allow you to explicitly describe a variable's type. In Hybroid Live, types
 number a  // variable uninitialized, type required
 let num = 1 // variable initialized, type inferred
 pub fn(text, bool) callback // function uninitialized, type required
+pub b = true // global variable initialized, type inferred
 ```
 
 ### Declaration of constants
