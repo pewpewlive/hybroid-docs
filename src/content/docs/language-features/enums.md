@@ -4,7 +4,7 @@ sidebar:
   order: 10
 ---
 
-Enums are converted to tables if compiling to Lua.
+Enums are a pure hybroid concept, since in lua they are optimized down to just numbers, therefore causing zero overhead.
 
 ```rs
 enum SandwichType {
@@ -13,4 +13,6 @@ enum SandwichType {
   GrilledCheese,
   Ham
 }
+
+let variant = SandwichType.Panini
 ```
