@@ -82,8 +82,8 @@ pub meshes = [
 ```rs title="level.hyb"
 env MyLevel as Level
 
-let myEntity = NewEntity(0fx, 0fx)
-SetEntityMesh(myEntity, MyMesh, 0)
+let myEntity = Pewpew:NewEntity(0f, 0f)
+Pewpew:SetEntityMesh(myEntity, MyMesh, 0)
 ```
 
 ## Using sound environments
@@ -92,12 +92,13 @@ SetEntityMesh(myEntity, MyMesh, 0)
 env MySound as Sound
 
 pub sounds = [
-  ParseSound("soem jfxr link here")
+  ParseSound("https://pewpew.live/jfxr/index.html#...")
 ]
 ```
 
 ```rs title="level.hyb"
 env MyLevel as Level
-SetLevelSize(500f, 500f)
-PlaySound(MySound, 0, 100f, 100f)
+
+Pewpew:SetLevelSize(500f, 500f)
+Pewpew:PlaySound(MySound, 0, 100f, 100f)
 ```
