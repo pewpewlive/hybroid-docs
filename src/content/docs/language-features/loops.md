@@ -70,7 +70,7 @@ for index, fruit in fruits {
 }
 ```
 
-You also have the option to ignore one of the variables by leaving an empty identifier (`_`) in there.
+You also have the option to ignore one of the variables by leaving a discard identifier (`_`) in there.
 
 ```rs
 let fruits = ["banana", "kiwi", "apple", "pear", "cherry"]

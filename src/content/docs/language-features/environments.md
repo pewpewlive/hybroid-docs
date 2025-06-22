@@ -26,13 +26,11 @@ env EnvName as EnvType
 The following environment types are available:
 
 - `Level` - for working with levels
-  -The Pewpew and Fmath library are available
-- `Mesh` - for working with meshes
-  - Fmath and Pewpew libraries are not allowed. `Math` library is allowed
-- `Sound` - for working with sounds
-  - Same as `Mesh`
+  - The `Pewpew` and `Fmath` libraries are available
+- `Mesh`, `Sound` - for working with meshes and sounds respectively
+  - `Fmath` and `Pewpew` libraries are not allowed. `Math` library is allowed
 - `Shared` - for helpers being used by multiple environments with different environment types
-  - The Pewpew library is not allowed
+  - The `Pewpew` library is not allowed
 
 The `Table` and `String` libraries are allowed everywhere.
 
@@ -71,7 +69,7 @@ Greet("Peter") // -> Hello, Peter!
 env MyMesh as Mesh
 
 pub meshes = [
-  struct {
+  struct{
     vertexes = list<list<number>>[],
     segments = list<list<number>>[],
     colors = list<number>[]

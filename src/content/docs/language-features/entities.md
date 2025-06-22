@@ -4,7 +4,7 @@ sidebar:
   order: 3
 ---
 
-Entity declarations work similarly to class declarations, with a different syntax and a few extra features for making the creation of custom entities easier. This feature is disallowed in `Shared` environments.
+Entity declarations work similarly to class declarations, with different syntax and a few extra features for making the creation of custom entities easier. This feature is disallowed in `Shared` environments.
 
 ### Defining an `entity`
 

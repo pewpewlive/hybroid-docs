@@ -4,7 +4,7 @@ sidebar:
   order: 10
 ---
 
-Enums are a pure hybroid concept, since in lua they are optimized down to just numbers, therefore causing zero overhead.
+Enums are a pure Hybroid concept, since in Lua they are optimized down to just numbers, therefore causing zero overhead.
 
 ```rs
 enum SandwichType {
