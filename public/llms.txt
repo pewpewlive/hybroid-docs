@@ -300,3 +300,6 @@ _Available in Level Environment via `Pewpew` namespace._
 - [Hybroid Live GitHub repo](https://github.com/pewpewlive/hybroid-live)
 - [Hybroid Live Documentation](https://pewpewlive.github.io/hybroid-docs/)
 - [Hybroid Team Website](https://hybroid.pewpew.live/)
+- [PewPew Live Documentation (in Lua)](https://pewpewlive.github.io/ppl-docs/)
+- [ppl-utils (level development toolkit)](https://github.com/pewpewlive/ppl-utils)
+- [PewPew Live Website](https://pewpew.live/)
