@@ -1,0 +1,296 @@
+# Hybroid Live Programming Language Documentation
+
+This document provides context for AI agents assisting with Hybroid Live development. Hybroid Live is a statically-typed programming language compiled to Lua, tailored for the PewPew Live game engine.
+
+## 1. Introduction
+
+Hybroid Live overcomes Lua's limitations in PewPew Live development.
+
+**Key Features:**
+
+- Strict typing and automatic dead-code elimination.
+- Classes, Enums, and Entities (Optimized OOP).
+- Native fixedpoint number support (`fx`).
+- Rust-like syntax.
+- Compiles to Lua.
+
+**Limitations:**
+
+- No Lua interoperability.
+- Strict environment rules.
+
+## 2. Project Setup
+
+**File Extension:** `.hyb`
+**Project Initialization:**
+
+```bash
+hybroid init --package hello-world --name "hello, world!" --output out
+```
+
+**Compilation/Running:**
+
+```bash
+# Handled via CLI or VS Code extension
+```
+
+## 3. Language Basics
+
+### Comments
+
+```
+// Single-line
+/* Multi-line */
+```
+
+### Declarations & Variables
+
+Variables can be local (`let`), public/global (`pub`), or constants (`const`). Types are inferred if initialized, otherwise required.
+
+```
+let x = 10              // Inferred type
+number y                // Explicit type, uninitialized
+pub is_active = true    // Global variable
+const PI = 3.14f        // Constant
+```
+
+### Data Types
+
+- `number`: Standard Lua number (float/integer depending on Lua version/environment).
+- `fixed`: Fixed-point number (32-bit). Crucial for deterministic gameplay logic in PewPew Live.
+- `text`: String.
+- `bool`: Boolean.
+- `entity`: Reference to a game entity.
+- `fn(Args) -> ReturnType`: Function type.
+- `list<T>`: Array/List.
+- `map<T>`: Dictionary/Map.
+
+### Literals
+
+- **Fixedpoint:** `100.2048fx` (Explicit fixedpoint).
+- **Decimal:** `100.5f` (Auto-converts to fixedpoint in `Level`/`Shared` envs, stays float in `Mesh`/`Sound`).
+- **Angles:** `180d` (Degrees -> Radians), `3.14r` (Radians, syntax sugar for float).
+- **Hex/Oct/Bin:** `0xff`, `0o07`, `0b01`.
+
+### Keywords
+
+`alias`, `and`, `as`, `break`, `by`, `class`, `const`, `continue`, `destroy`, `else`, `entity`, `enum`, `env`, `every`, `false`, `fn`, `for`, `from`, `if`, `in`, `is`, `isnt`, `let`, `match`, `new`, `or`, `pub`, `repeat`, `return`, `self`, `spawn`, `struct`, `tick`, `to`, `true`, `use`, `while`, `with`, `yield`
+
+### Operators & Symbols
+
+| Category | Symbols |
+| :--- | :--- |
+| **Arithmetic** | `+`, `-`, `*`, `/`, `\`, `%`, `^` |
+| **Assignment** | `=`, `+=`, `-=`, `*=`, `/=`, `\=`, `%=`, `^=`, `<<=`, `>>=`, `|=`, `&=`, `~=` |
+| **Comparison** | `==`, `!=`, `<`, `<=`, `>`, `>=` |
+| **Logical** | `!`, `and`, `or` |
+| **Bitwise** | `<<`, `>>`, `&`, `|`, `~` |
+| **Delimiters** | `(`, `)`, `{`, `}`, `[`, `]`, `,`, `:`, `.`, `#` |
+| **Special** | `..` (concat), `...` (ellipsis), `->` (thin arrow), `=>` (fat arrow) |
+
+
+## 4. Environments
+
+Every file must start with an environment definition. This dictates available libraries.
+
+**Syntax:** `env EnvName as EnvType`
+
+**Types:**
+
+- `Level`: Game logic. Access to `Pewpew`, `Fmath`. No `Math`.
+- `Mesh`: Mesh generation. Access to `Math`. No `Pewpew`, `Fmath`.
+- `Sound`: Sound generation. Access to `Math`. No `Pewpew`, `Fmath`.
+- `Shared`: Helper code. No `Pewpew`.
+
+**Importing:**
+
+```
+env MyLevel as Level
+use MyHelperEnv // Imports functions/vars from MyHelperEnv
+// Or call directly: MyHelperEnv:FunctionName()
+```
+
+## 5. Control Flow
+
+### Conditional
+
+```
+if a == 10 { ... } else if a == 20 { ... } else { ... }
+
+match a {
+  1 => doSomething()
+  10 => { ... }
+  else => defaultAction()
+}
+// Match as expression
+let val = match a { 10 => "Ten", else => "Other" }
+```
+
+### Loops
+
+- **Tick Loop:** (Unique to Hybroid/PewPew). Runs every game tick.
+  ```
+  tick { ... }
+  tick with time { ... } // time is ticks elapsed
+  ```
+- **Repeat:** Simple iteration.
+  ```
+  repeat 10 { ... }
+  repeat 10 with i { ... }
+  repeat by 2 from 4 to 10 with i { ... }
+  ```
+- **For Loop:** Iterator based.
+  ```
+  for index, value in list { ... }
+  ```
+- **While:** `while condition { ... }` (Discouraged in favor of ticks/repeats).
+
+## 6. Data Structures
+
+### Lists
+
+0-indexed or 1-indexed depends on Lua backend (usually 1-indexed in PewPew).
+
+```
+let nums = list<number>[]
+let fruits = ["apple", "banana"]
+let val = fruits[1]
+Table:Insert(fruits, "cherry")
+```
+
+### Maps
+
+```
+let inventory = { "apple" = 5, "sword" = 1 }
+let count = inventory["apple"]
+inventory["shield"] = 1
+```
+
+### Structs (Anonymous)
+
+Used mainly for configuration objects in API calls.
+
+```
+let config = struct{ shield = 5, camera_distance = -150f }
+```
+
+## 7. Functions & Classes
+
+### Functions
+
+```
+fn Add(a, b) -> number {
+  return a + b
+}
+// Anonymous
+let sub = fn(a, b) { return a - b }
+```
+
+### Classes
+
+Structs with methods.
+
+```
+class Vector {
+  number x, y
+  new(number x, y) { self.x = x; self.y = y }
+  fn Mag() -> number { return Sqrt(x*x + y*y) }
+}
+let v = new Vector(1, 2)
+```
+
+### Enums
+
+Compiles to numbers.
+
+```
+enum State { Idle, Run, Jump }
+let s = State.Idle
+```
+
+## 8. Entities (ECS-lite)
+
+Custom syntax for defining game objects.
+
+```
+entity Enemy {
+  fixed hp = 100fx
+
+  spawn(fixed start_hp) {
+    self.hp = start_hp
+  }
+
+  destroy() {
+    Pewpew:ExplodeEntity(self, 10)
+  }
+
+  Update() { // Called every tick automatically if defined
+    // logic
+  }
+}
+
+// Spawning
+let e = spawn Enemy(50fx)
+destroy e()
+```
+
+## 9. Standard Libraries & Built-ins
+
+### Built-ins
+
+- `ToString(val)`: Convert to string.
+- `ParseSound(url)`: Parse JFXR url (Sound env only).
+
+### Standard Lua Libraries
+
+- **String:** `Byte`, `Char`, `Find`, `Format`, `Gsub`, `Len`, `Sub`, `Upper`, etc.
+- **Table:** `Concat`, `Insert`, `Remove`, `Sort`.
+- **Math** (Mesh/Sound/Shared only): `Sin`, `Cos`, `Tan`, `Sqrt`, `Random`, `Floor`, `Ceil`.
+
+### Fmath API (Fixed Point Math)
+
+_Available in Level Environment._
+
+- `MaxFixed()`, `RandomFixed(min, max)`, `RandomNumber(min, max)`
+- `Sqrt(x)`, `FromFraction(num, den)`, `ToNumber(fx)`, `ToFixed(num)`, `AbsFixed(fx)`
+- `Sincos(angle)`, `Atan2(y, x)`, `Tau()`
+
+## 10. PewPew API
+
+_Available in Level Environment via `Pewpew` namespace._
+
+**Game/Level Control:**
+
+- `Print(str)`, `SetLevelSize(w, h)`, `StopGame()`.
+- `AddWall(x1, y1, x2, y2)`, `RemoveWall(id)`.
+- `PlaySound(env, idx, x, y)`, `PlayAmbientSound(env, idx)`.
+
+**Player/Ship:**
+
+- `GetNumberOfPlayers()`, `GetPlayerInputs(idx)`, `GetPlayerScore(idx)`.
+- `ConfigurePlayer(idx, config)`, `ConfigurePlayerHud(idx, config)`.
+- `NewShip(x, y, idx)`, `ConfigureShip(id, config)`, `SetShipSpeed(...)`.
+- `DamageShip(id, dmg)`, `AddArrowToShip(...)`.
+- `NewPlayerBullet(x, y, angle, idx)`.
+
+**Entities (General):**
+
+- `NewEntity(x, y)`, `SetEntityPosition(id, x, y)`, `GetEntityPosition(id)`.
+- `SetEntityMesh(id, env, idx)`, `SetEntityMeshColor(id, col)`.
+- `SetEntityMeshScale(id, scale)`, `SetEntityMeshAngle(id, ang, x, y, z)`.
+- `DestroyEntity(id)`, `IsEntityAlive(id)`.
+
+**Enemies/Objects Creation:**
+
+- `NewAsteroid(x, y)`, `NewAsteroidWithSize(...)`.
+- `NewYellowBAF(...)`, `NewRedBAF(...)`, `NewBlueBAF(...)`.
+- `NewBomb(...)`, `NewBonus(...)`, `NewPointonium(...)`.
+- `NewMothership(...)`, `NewWary(...)`, `NewUFO(...)`.
+- `NewRollingCube(...)`, `NewRollingSphere(...)`.
+- `CreateExplosion(x, y, color, scale, count)`.
+
+**Collisions/Callbacks:**
+
+- `SetEntityWallCollision(id, bool, callback)`.
+- `SetEntityPlayerCollision(id, callback)`.
+- `SetEntityWeaponCollision(id, callback)`.
