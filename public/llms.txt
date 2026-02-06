@@ -294,3 +294,9 @@ _Available in Level Environment via `Pewpew` namespace._
 - `SetEntityWallCollision(id, bool, callback)`.
 - `SetEntityPlayerCollision(id, callback)`.
 - `SetEntityWeaponCollision(id, callback)`.
+
+## 11. Useful links
+
+- [Hybroid Live GitHub repo](https://github.com/pewpewlive/hybroid-live)
+- [Hybroid Live Documentation](https://pewpewlive.github.io/hybroid-docs/)
+- [Hybroid Team Website](https://hybroid.pewpew.live/)
