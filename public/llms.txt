@@ -1,6 +1,6 @@
 # Hybroid Live Programming Language Documentation
 
-This document provides context for AI agents assisting with Hybroid Live development. Hybroid Live is a statically-typed programming language compiled to Lua, tailored for the PewPew Live game engine.
+This document provides context for AI agents assisting with Hybroid Live development. Hybroid Live is a statically-typed programming language compiled to Lua, tailored for the PewPew Live game.
 
 ## 1. Introduction
 
