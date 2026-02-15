@@ -96,3 +96,19 @@ Tau() -> fixed
 ```
 Returns τ (aka 2π).
 
+
+### `Exp`
+
+```rs
+Exp(fixed x) -> fixed
+```
+Returns e^x, the base-e exponential of x.
+
+
+### `Ln`
+
+```rs
+Ln(fixed x) -> fixed
+```
+Returns the natural logarithm of x.
+

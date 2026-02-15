@@ -40,6 +40,10 @@ sidebar:
 - `BonusImplosion`
 - `Mace`
 - `PlasmaField`
+- `Laserbeam`
+- `Exploder`
+- `ExploderExplosion`
+- `WeaponZone`
 
 ### `MothershipType`
 
@@ -601,6 +605,17 @@ NewUFO(fixed x, fixed y, fixed dx) -> entity
 Creates a new UFO at the location `x`,`y` moving horizontally at the speed of `dx`, and returns its entityId.
 
 
+### `NewWeaponZone`
+
+```rs
+NewWeaponZone(fixed x, fixed y, CannonType cannon, CannonFreq frequency, struct{
+    fixed radius,
+    number number_of_sides
+}) -> entity
+```
+Creates a new Weapon Zone at the location `x`,`y` with the respective weapon configuration, and another optional configuration table, that has the following keys:- `number_of_sides` - number of sides for the zone (default 12), right now *only* supports a value of 6.- `radius` - the radius in fx of the weapon zone (default 80fx).Default behavior of leaving a Weapon Zone is to *reset* the weapon configuration of each ship to **no** weapon!
+
+
 ### `SetRollingCubeWallCollision`
 
 ```rs
@@ -841,7 +856,7 @@ Sets the radius defining the visibility of the entity. This allows the game to k
 ```rs
 SetEntityWallCollision(entity entity_id, bool collide_with_walls, fn(entity entity, number x, number y))
 ```
-`collide_with_walls` configures whether the entity should stop when colliding with walls. If `collision_callback` is not nil, it is called anytime a collision is detected. The callback gets called with the entity id of the entity withthe callback, and with the normal to the wall.
+`collide_with_walls` configures whether the entity should stop when colliding with walls. If `collision_callback` is not nil, it is called anytime a collision is detected. The callback gets called with the entity id of the entity with the callback, and with the normal to the wall.
 
 
 ### `SetEntityPlayerCollision`
