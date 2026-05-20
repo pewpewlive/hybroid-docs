@@ -83,3 +83,29 @@ for index in fruits {// ignores the value
   Pewpew:Print(index)
 }
 ```
+
+### Entity iteration (every)
+
+You can iterate through all active instances of a specific entity type using the `every` keyword:
+
+```rs
+for enemy in every Quadro {
+  enemy.Damage(2)
+}
+```
+
+### Break and continue
+
+Use `break` to exit a loop early and `continue` to skip to the next iteration:
+
+```rs
+repeat fruits_len with i {
+  if fruits[i] == "kiwi" {
+    continue  // skip kiwis
+  }
+  if fruits[i] == "cherry" {
+    break     // stop at cherries
+  }
+  Pewpew:Print(fruits[i])
+}
+```

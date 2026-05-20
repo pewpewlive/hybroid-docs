@@ -1,6 +1,6 @@
 # Hybroid Live Programming Language Documentation
 
-This document provides context for AI agents assisting with Hybroid Live development. Hybroid Live is a statically-typed programming language compiled to Lua, tailored for the PewPew Live game.
+This document provides context for AI agents assisting with Hybroid Live development. Hybroid Live is a statically-typed programming language compiled to Lua, tailored for the PewPew Live game. **Status: Alpha (v0.1.0) — breaking changes may occur.**
 
 ## 1. Introduction
 
@@ -9,8 +9,9 @@ Hybroid Live overcomes Lua's limitations in PewPew Live development.
 **Key Features:**
 
 - Strict typing and automatic dead-code elimination.
-- Classes, Enums, and Entities (Optimized OOP).
+- Classes, Enums, Type Aliases, and Entities (Optimized OOP).
 - Native fixedpoint number support (`fx`).
+- Type casting with smart-casting (`is`, `isnt`, `if let`).
 - Rust-like syntax.
 - Compiles to Lua.
 
@@ -18,20 +19,22 @@ Hybroid Live overcomes Lua's limitations in PewPew Live development.
 
 - No Lua interoperability.
 - Strict environment rules.
+- Macros, `find`/`remove` keywords, and LSP are planned but not yet implemented.
 
-## 2. Project Setup
+## 2. CLI Commands
 
-**File Extension:** `.hyb`
 **Project Initialization:**
 
 ```bash
 hybroid init --package hello-world --name "hello, world!" --output out
 ```
 
-**Compilation/Running:**
+**Build:**
 
 ```bash
-# Handled via CLI or VS Code extension
+hybroid build     # Transpiles all .hyb files to Lua (reads hybconfig.toml)
+hybroid watch     # Watches for file changes and auto-rebuilds
+hybroid add       # Stub — package management is not yet implemented
 ```
 
 ## 3. Language Basics
@@ -42,6 +45,8 @@ hybroid init --package hello-world --name "hello, world!" --output out
 // Single-line
 /* Multi-line */
 ```
+
+Semicolons are treated as whitespace (like Lua).
 
 ### Declarations & Variables
 
@@ -62,8 +67,19 @@ const PI = 3.14f        // Constant
 - `bool`: Boolean.
 - `entity`: Reference to a game entity.
 - `fn(Args) -> ReturnType`: Function type.
-- `list<T>`: Array/List.
+- `list<T>`: Array/List (1-indexed).
 - `map<T>`: Dictionary/Map.
+
+### Type Aliases
+
+Create named shortcuts for complex or reusable types:
+
+```
+alias ID = number
+pub alias Config = struct{ number hp, fixed speed }
+
+fn GetName(ID id) -> text { return "Player " .. ToString(id) }
+```
 
 ### Literals
 
@@ -97,10 +113,10 @@ Every file must start with an environment definition. This dictates available li
 
 **Types:**
 
-- `Level`: Game logic. Access to `Pewpew`, `Fmath`. No `Math`.
+- `Level`: Game logic. Access to `Pewpew`, `Fmath`. No standard `Math`.
 - `Mesh`: Mesh generation. Access to `Math`. No `Pewpew`, `Fmath`.
 - `Sound`: Sound generation. Access to `Math`. No `Pewpew`, `Fmath`.
-- `Shared`: Helper code. No `Pewpew`.
+- `Shared`: Helper code shared across environments. No `Pewpew`.
 
 **Importing:**
 
@@ -117,13 +133,33 @@ use MyHelperEnv // Imports functions/vars from MyHelperEnv
 ```
 if a == 10 { ... } else if a == 20 { ... } else { ... }
 
+// if as expression (use `return` in each branch)
+let check = if a == 10 { return "Ten" } else { return "Other" }
+
 match a {
-  1 => doSomething()
-  10 => { ... }
+  1, 10 => { ... }          // multiple match arms (if a is 1 or 10)
+  20 => doSomething()
   else => defaultAction()
 }
 // Match as expression
 let val = match a { 10 => "Ten", else => "Other" }
+// Multi-line match expressions use `yield`:
+let val = match a {
+  10 => { Pewpew:Print("ten"); yield "Ten" }
+  else => { yield "Other" }
+}
+```
+
+### Type Casting
+
+Use `is` and `isnt` to check entity types. Smart-casting with `if let` scopes the cast variable:
+
+```
+if target is Asteroid { ... }
+
+if let targetEntity = collided is ShieldPowerUp {
+  targetEntity.strength = 100fx   // fields available after cast
+}
 ```
 
 ### Loops
@@ -139,26 +175,31 @@ let val = match a { 10 => "Ten", else => "Other" }
   repeat 10 with i { ... }
   repeat by 2 from 4 to 10 with i { ... }
   ```
-- **For Loop:** Iterator based.
+- **For Loop:** Iterator based, including entity iteration.
   ```
   for index, value in list { ... }
+  for _, value in list { ... }        // discard index
+  for enemy in every Quadro { ... }    // iterate all active entities of type
   ```
 - **While:** `while condition { ... }` (Discouraged in favor of ticks/repeats).
+- **Break/Continue:** `break` exits a loop; `continue` skips to the next iteration.
 
 ## 6. Data Structures
 
 ### Lists
 
-0-indexed or 1-indexed depends on Lua backend (usually 1-indexed in PewPew).
+1-indexed arrays.
 
 ```
 let nums = list<number>[]
 let fruits = ["apple", "banana"]
-let val = fruits[1]
+let val = fruits[1]          // "apple"
 Table:Insert(fruits, "cherry")
 ```
 
 ### Maps
+
+String-keyed dictionaries.
 
 ```
 let inventory = { "apple" = 5, "sword" = 1 }
@@ -178,12 +219,15 @@ let config = struct{ shield = 5, camera_distance = -150f }
 
 ### Functions
 
+Can be local, public (`pub fn`), or anonymous. Support typed parameters and return types:
+
 ```
-fn Add(a, b) -> number {
-  return a + b
-}
+fn Add(number a, number b) -> number { return a + b }
+pub fn CalculateDamage(fixed base, fixed mult) -> fixed { return base * mult }
 // Anonymous
 let sub = fn(a, b) { return a - b }
+// Function type for uninitialized variables
+pub fn(text, bool) callback
 ```
 
 ### Classes
@@ -201,7 +245,7 @@ let v = new Vector(1, 2)
 
 ### Enums
 
-Compiles to numbers.
+Compiles to numbers (zero-overhead).
 
 ```
 enum State { Idle, Run, Jump }
@@ -210,7 +254,7 @@ let s = State.Idle
 
 ## 8. Entities (ECS-lite)
 
-Custom syntax for defining game objects.
+Custom syntax for defining game objects. Predefined callbacks: `Update()`, `WeaponCollision()`, `WallCollision()`, `PlayerCollision()`.
 
 ```
 entity Enemy {
@@ -245,11 +289,11 @@ destroy e()
 
 - **String:** `Byte`, `Char`, `Find`, `Format`, `Gsub`, `Len`, `Sub`, `Upper`, etc.
 - **Table:** `Concat`, `Insert`, `Remove`, `Sort`.
-- **Math** (Mesh/Sound/Shared only): `Sin`, `Cos`, `Tan`, `Sqrt`, `Random`, `Floor`, `Ceil`.
+- **Math** (Mesh/Sound only): `Sin`, `Cos`, `Tan`, `Sqrt`, `Random`, `Floor`, `Ceil`.
 
 ### Fmath API (Fixed Point Math)
 
-_Available in Level Environment._
+_Available in Level environment._
 
 - `MaxFixed()`, `RandomFixed(min, max)`, `RandomNumber(min, max)`
 - `Sqrt(x)`, `FromFraction(num, den)`, `ToNumber(fx)`, `ToFixed(num)`, `AbsFixed(fx)`

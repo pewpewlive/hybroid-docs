@@ -1,7 +1,7 @@
 ---
 title: Classes
 sidebar:
-  order: 11
+  order: 13
 ---
 
 Classes are structs that allow methods.

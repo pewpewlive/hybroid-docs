@@ -45,4 +45,7 @@ Pewpew:Print(ToString(inventory))
   watermelons: 10
 }
 */
-```
+
+:::note[Planned]
+`find` and `remove` keywords for maps are planned but not yet implemented.
+:::```

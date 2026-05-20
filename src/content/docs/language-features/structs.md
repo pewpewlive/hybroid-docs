@@ -1,7 +1,7 @@
 ---
 title: Annonymous structs
 sidebar:
-  order: 8
+  order: 9
 ---
 
 Annonymous structs are tables with specific keys and values. They are primarily used to interface with the PewPew Live API.

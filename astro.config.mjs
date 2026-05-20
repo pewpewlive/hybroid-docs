@@ -24,21 +24,27 @@ export default defineConfig({
       sidebar: [
         {
           label: "Get Started",
-          autogenerate: {
-            directory: "get-started",
-          },
+          items: [
+            { autogenerate: { directory: "get-started" } },
+          ],
         },
         {
           label: "Language features",
-          autogenerate: {
-            directory: "language-features",
-          },
+          items: [
+            { autogenerate: { directory: "language-features" } },
+          ],
         },
         {
           label: "Library documentation",
-          autogenerate: {
-            directory: "libraries",
-          },
+          items: [
+            { autogenerate: { directory: "libraries" } },
+          ],
+        },
+        {
+          label: "Tools",
+          items: [
+            { autogenerate: { directory: "tools" } },
+          ],
         },
       ],
     }),

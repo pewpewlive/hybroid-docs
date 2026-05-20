@@ -36,6 +36,15 @@ pub b = true // global variable initialized, type inferred
 const PI = 3.14f
 ```
 
+### Type aliases
+
+Type aliases let you create reusable names for types. See the full [Type aliases](/language-features/type-aliases/) page for details.
+
+```rs
+alias ID = number
+pub alias Config = struct{ number hp, fixed speed }
+```
+
 ## Types
 
 ### Basic types

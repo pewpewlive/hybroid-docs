@@ -32,4 +32,8 @@ let fruits = list<text>[]
 Table:Insert(fruits, "watermelon")
 
 Pewpew:Print(ToString(fruits)) // -> ["watermelon"]
+
+:::note[Planned]
+`find` and `remove` keywords for lists are planned but not yet implemented.
+:::
 ```

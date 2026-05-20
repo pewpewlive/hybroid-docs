@@ -1,7 +1,7 @@
 ---
 title: Enums
 sidebar:
-  order: 10
+  order: 12
 ---
 
 Enums are a pure Hybroid concept, since in Lua they are optimized down to just numbers, therefore causing zero overhead.
