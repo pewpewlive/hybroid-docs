@@ -4,21 +4,36 @@ sidebar:
   order: 1
 ---
 
-import { Aside } from "@astrojs/starlight/components"
+import { Aside, Tabs, TabItem } from "@astrojs/starlight/components"
 
 <Aside type="note">You need to have a computer in order to use Hybroid Live.</Aside>
 
 ## Installation
 
-1. Download the latest release from [GitHub](https://github.com/pewpewlive/hybroid-live/releases/latest).
+<Tabs syncKey="os">
+  <TabItem label="macOS / Linux">
+    Run this command in your terminal:
 
-2. Move the downloaded file to a directory of your choice.
+    ```bash
+    curl -fsSL https://hybroid.pewpew.live/install.sh | sh
+    ```
+  </TabItem>
+  <TabItem label="Windows">
+    Run this command in PowerShell:
+    
+    ```powershell
+    irm https://hybroid.pewpew.live/install.ps1 | iex
+    ```
+    
+    If PowerShell blocks the script, run this once to allow it for your user:
+    
+    ```powershell
+    Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+    ```
+  </TabItem>
+</Tabs>
 
-3. Rename `hybroid-xxxxxx-xxxxxx` to `hybroid` (or from `hybroid-windows-xxxxxx.exe` to `hybroid.exe` on Windows).
-
-4. Go to settings and add the directory to your PATH.
-
-5. Run this command in your terminal:
+Then, run this command in your terminal:
 
 ```bash
 hybroid -v
