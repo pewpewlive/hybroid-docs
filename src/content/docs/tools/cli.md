@@ -47,3 +47,13 @@ Runs indefinitely. Only triggers on `.hyb` file writes (ignores `.lua` files).
 :::caution
 The `add` command is a stub. Package management from the PewPew Marketplace is not yet implemented.
 :::
+
+## `language-server` (aliases: `server`, `lsp`)
+
+Starts the Hybroid Language Server Protocol (LSP) process for editor integration.
+
+```bash
+hybroid language-server
+```
+
+This is used by editors (such as VS Code) to provide autocompletion, diagnostics, and other IDE features. It reads from standard input and writes to standard output following the LSP specification. This command is typically invoked automatically by the editor extension rather than directly by users.

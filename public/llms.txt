@@ -1,6 +1,6 @@
 # Hybroid Live Programming Language Documentation
 
-This document provides context for AI agents assisting with Hybroid Live development. Hybroid Live is a statically-typed programming language compiled to Lua, tailored for the PewPew Live game. **Status: Alpha (v0.1.0) — breaking changes may occur.**
+This document provides context for AI agents assisting with Hybroid Live development. Hybroid Live is a statically-typed programming language compiled to Lua, tailored for the PewPew Live game. **Status: Alpha (v0.2.0) — breaking changes may occur.**
 
 ## 1. Introduction
 
@@ -14,12 +14,13 @@ Hybroid Live overcomes Lua's limitations in PewPew Live development.
 - Type casting with smart-casting (`is`, `isnt`, `if let`).
 - Rust-like syntax.
 - Compiles to Lua.
+- LSP support for editor integration.
 
 **Limitations:**
 
 - No Lua interoperability.
 - Strict environment rules.
-- Macros, `find`/`remove` keywords, and LSP are planned but not yet implemented.
+- Macros and `find`/`remove` keywords are planned but not yet implemented.
 
 ## 2. CLI Commands
 
