@@ -94,6 +94,8 @@ for enemy in every Quadro {
 }
 ```
 
+Note: the entity type has to have originated from an entity declaration. You cannot iterate over all motherships, for example, because they're not hybroid entities.
+
 ### Break and continue
 
 Use `break` to exit a loop early and `continue` to skip to the next iteration:
