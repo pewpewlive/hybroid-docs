@@ -22,7 +22,7 @@ if target isnt Ship {
 
 ## Smart-casting
 
-Smart-casting allows you to check and cast a custom entity in one step using `if let`. Once cast, all fields and methods of that entity type are available within the block:
+Smart-casting allows you to check and cast a hybroid entity in one step using `if let`. Once cast, all fields and methods of that entity type are available within the block:
 
 ```rs
 entity ShieldPowerUp {

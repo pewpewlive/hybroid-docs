@@ -23,11 +23,11 @@ fn Add(number a, number b) -> number {
   return a + b
 }
 
-fn Greet(text name) {
-  Pewpew:Print("Hello" .. name .. "!")
+fn SpecialTransformation(number a, b) -> (number, number) {
+  return -b, a
 }
 
-Greet("John") // -> Hello, John!
+let x, y = SpecialTransformation(1, 2)
 let result = Add(10, 20)
 Pewpew:Print(ToString(result)) // -> 30
 ```
@@ -62,4 +62,4 @@ When declaring a variable that will hold a function, use the function type synta
 pub fn(text, bool) callback // function uninitialized, type required
 ```
 
-The type syntax is `fn(params) -> return_type` where both parameters and return type are optional.
+The type syntax is `fn(params) -> return_type` where both parameters and return type are optional. If there are multiple return types, then it's `fn(params) -> (return_type_1, return_type_2, ...)`.
