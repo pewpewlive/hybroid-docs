@@ -30,6 +30,24 @@ entity ExampleEntity {
     Pewpew:SetEntityPosition(self, x, y)
   }
 
+  PlayerCollision(number playerIndex, entity shipId) {
+    Pewpew:Print("Got hit by ship "..ToString(playerIndex).."!")
+  }
+
+  WeaponCollision(number playerIndex, WeaponType weaponType) -> bool {
+    match weaponType {
+      WeaponType.Bullet => {
+        Pewpew:Print("Got hit by a player bullet!")
+        Damage(1)
+        return true
+      }
+    }
+
+    return false
+  }
+
+  WallCollision(fixed normalWallX, normalWallY) {}
+
   fn Damage(number damage) {
     hp -= damage
     if hp <= 0 {
